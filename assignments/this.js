@@ -25,8 +25,25 @@ this.greet(); // Outputs 'Hello World!'
 window.greet(); // Outputs 'Hello World!'
 
 // Principle 2
-
 // code example for Implicit Binding
+
+const person = {
+  name: "Melvine",
+  greet() {
+    console.log(`${this.person} says Hi`);
+  }
+};
+
+const anotherPerson = {
+  name: "Awa",
+  greet() {
+    console.log(`${this.person} says Hi`);
+  }
+};
+
+person.greet(); // Outputs 'Melvine says Hi' 
+
+
 
 // Principle 3
 
