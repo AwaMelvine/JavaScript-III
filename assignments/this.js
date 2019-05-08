@@ -5,7 +5,7 @@
 
 * 2. When a function is called using the dot notation (e.g obj.test()), the this keyword in that function will refer to the object before the dot notation
 
-* 3. Every time an instance of a class is created, the constructor runs and the this keyword inside that constructor refers to that instance of that class at that time 
+* 3. Every time an instance of a class is created using the new keyword, the constructor runs and the this keyword inside that constructor refers to that instance of that class at that time 
 
 * 4. When calling a method using javascripts call() or apply() method, the this keyword is explicitly defined as first arguement.
 
@@ -41,14 +41,16 @@ const anotherPerson = {
   }
 };
 
-person.greet(); // Outputs 'Melvine says Hi' 
-
-
+person.greet(); // Outputs 'Melvine says Hi'
 
 // Principle 3
-
 // code example for New Binding
+function Person(name) {
+  this.name = name;
+}
+
+const boy = new Person("John");
+console.log(boy.name); // outputs 'John'
 
 // Principle 4
-
 // code example for Explicit Binding
