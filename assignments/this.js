@@ -54,3 +54,18 @@ console.log(boy.name); // outputs 'John'
 
 // Principle 4
 // code example for Explicit Binding
+
+function Animal(name, kind) {
+  this.name = name;
+  this.kind = kind;
+}
+
+Animal.prototype.identifyAnimal = function() {
+  console.log(`${this.name} is a ${this.kind}`);
+};
+
+const myDog = new Animal("Jack", "dog");
+myDog.identifyAnimal(); // Outputs 'Jack is a dog.'
+
+const myDogFunc = myDog.identifyAnimal;
+myDogFunc.call(myDog, "Jack", "dog"); // Outputs 'Jack is a dog.' (Explicit Binding with myDog instance)
