@@ -132,3 +132,60 @@ console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.
 // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
+function Villain(args) {
+  Humanoid.call(this, args);
+}
+Villain.prototype.removePoints = function(points) {
+  this.healthPoints = this.healthPoints - points;
+  if (this.healthPoints < 0) {
+    return `Health point below zero, Villain`;
+  }
+  return `Uh-oh, you lost ${points} points! You have ${
+    this.healthPoints
+  } left, Villain`;
+};
+
+function Hero(args) {
+  Humanoid.call(this, args);
+}
+
+Hero.prototype.removePoints = function(points) {
+  this.healthPoints = this.healthPoints - points;
+  if (this.healthPoints < 0) {
+    return `Health point below zero`;
+  }
+  return `Uh-oh, you lost ${points} points! You have ${
+    this.healthPoints
+  } left, Hero`;
+};
+
+const villain = new Villain({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 1,
+    height: 1
+  },
+  healthPoints: 6,
+  name: "Knight King",
+  team: "Wight Walkers",
+  weapons: ["Ice"],
+  language: "Mute Tongue"
+});
+
+const hero = new Hero({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 1,
+    height: 1
+  },
+  healthPoints: 100,
+  name: "Arya",
+  team: "Starks of Winterfell",
+  weapons: ["Valyrian Steel"],
+  language: "Common Tongue"
+});
+
+console.log(villain.removePoints(7)); // Outputs: 'Health point below zero, Villain'
+console.log(hero.removePoints(1)); // Outputs: Uh-oh, you lost 1 points! You have 99 left, Hero
